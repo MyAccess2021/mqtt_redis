@@ -1,31 +1,130 @@
-# MQTT , Websocket with SSL and redis
 
-Below is a **fully integrated, production-ready setup** where:
-
-* **Mosquitto** runs with WebSocket + SSL (`wss://`)
-* **Certbot** runs as a Docker container to issue + auto-renew certificates
-* **Redis** runs as before
-* Certificates are shared through a common volume (`./config/certs`)
-
-You’ll get a complete working stack with all commands, structure, and renewal automation.
-
----
-
-# 🧩 MQTT + WSS + Certbot + Redis (Fully Containerized)
+# 🚀 MQTT + WebSocket + SSL + Redis (Fully Containerized Stack)
 
 **Author:** MYACCESS PRIVATE LIMITED
-**Version:** 2.0   **Last Updated:** 25 Oct 2025
+**Version:** 2.1
+**Last Updated:** 25 Oct 2025
 
 ---
 
-## 🧱 Folder Structure
+## 🧭 Overview
+
+This guide provides a **complete, production-ready MQTT + WebSocket + SSL (WSS)** setup using Docker, Certbot, and Redis.
+It runs on **Ubuntu 24.04.3 LTS (Noble Numbat)** and is fully automated — including SSL certificate renewal and dynamic user provisioning.
+
+---
+
+## 🖥️ 0️⃣ **Server Configuration**
+
+| Key                  | Value                             |
+| -------------------- | --------------------------------- |
+| **OS**               | Ubuntu 24.04.3 LTS (Noble Numbat) |
+| **Codename**         | noble                             |
+| **Architecture**     | amd64                             |
+| **SSH Access**       | `ssh root@178.16.137.196`         |
+| **Base Type**        | Debian-like                       |
+| **Docker Engine**    | Docker CE 26.x                    |
+| **Compose Plugin**   | v2.29.1 or later                  |
+| **Hostname Example** | `srv-mqtt.myaccessio.com`         |
+
+### **OS Info File (`/etc/os-release`)**
+
+```
+PRETTY_NAME="Ubuntu 24.04.3 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.3 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+LOGO=ubuntu-logo
+```
+
+---
+
+## ⚙️ 1️⃣ **Initial Server Setup**
+
+### 1. Login as Root
+
+```bash
+ssh root@178.16.137.196
+```
+
+---
+
+## 🐳 2️⃣ **Install Docker and Docker Compose**
+
+Run the following commands step-by-step:
+
+```bash
+# Remove older versions (if any)
+sudo apt-get remove docker docker-engine docker.io containerd runc
+
+# Update and install dependencies
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg lsb-release
+
+# Add Docker’s official GPG key
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+# Add the Docker repository
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+| sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Install Docker Engine
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+# Enable and start Docker
+sudo systemctl enable docker
+sudo systemctl start docker
+
+# Add current user to Docker group
+sudo usermod -aG docker $USER
+newgrp docker
+
+# Install Docker Compose (binary)
+sudo curl -SL "https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+# Verify installation
+docker --version
+docker-compose --version
+docker compose version
+
+# (Optional) install Compose plugin via apt
+sudo apt-get install -y docker-compose-plugin
+```
+
+---
+
+## 📂 3️⃣ **Project Directory Setup**
+
+```bash
+cd ~
+mkdir -p projects/mqtt
+cd projects/mqtt
+mkdir -p config/{certs,acls} data log redis scripts
+chmod -R 777 config data log
+```
+
+---
+
+## 🧱 4️⃣ **Folder Structure**
 
 ```
 ~/projects/mqtt/
 ├── config/
 │   ├── acls
-│   ├── certs/                   # <== shared volume for certbot + mosquitto
-│   │   └── (certs will appear here automatically)
+│   ├── certs/                   # Shared volume for certbot + mosquitto
 │   ├── mosquitto.conf
 │   ├── passwd
 │   └── users.txt
@@ -42,17 +141,7 @@ You’ll get a complete working stack with all commands, structure, and renewal 
 
 ---
 
-## 🧰 1️⃣ Create Docker Network and Volume Structure
-
-```bash
-cd ~/projects/mqtt
-mkdir -p config/{certs,acls} data log redis scripts
-chmod -R 777 config data log
-```
-
----
-
-## ⚙️ 2️⃣ docker-compose.yml
+## 🧰 5️⃣ **docker-compose.yml**
 
 ```yaml
 version: "3.9"
@@ -65,9 +154,9 @@ services:
     depends_on:
       - certbot
     ports:
-      - "1884:1883"   # MQTT
-      - "8884:8883"   # MQTT over SSL
-      - "9004:9001"   # WebSocket over SSL
+      - "1884:1883"
+      - "8884:8883"
+      - "9004:9001"
     volumes:
       - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
       - ./config/passwd:/mosquitto/config/passwd
@@ -87,7 +176,7 @@ services:
     restart: unless-stopped
     command: certonly --standalone -d yourdomain.com --agree-tos --email admin@yourdomain.com --non-interactive --keep-until-expiring
     ports:
-      - "80:80"       # temporary during first run (HTTP-01 challenge)
+      - "80:80"
     volumes:
       - ./config/certs:/etc/letsencrypt/live/yourdomain.com
 
@@ -106,11 +195,11 @@ volumes:
   redis-data:
 ```
 
-> 🔸 Replace `yourdomain.com` and `admin@yourdomain.com` with your real domain and email.
+> Replace `yourdomain.com` and `admin@yourdomain.com` with your actual domain and email.
 
 ---
 
-## 🔐 3️⃣ mosquitto.conf (for SSL + WSS)
+## 🔐 6️⃣ **mosquitto.conf (SSL + WSS)**
 
 ```conf
 persistence true
@@ -124,17 +213,14 @@ allow_anonymous false
 password_file /mosquitto/config/passwd
 acl_file /mosquitto/config/acls
 
-# MQTT → external 1884
 listener 1883
 
-# MQTT over SSL → external 8884
 listener 8883
 cafile /etc/letsencrypt/live/yourdomain.com/fullchain.pem
 certfile /etc/letsencrypt/live/yourdomain.com/fullchain.pem
 keyfile /etc/letsencrypt/live/yourdomain.com/privkey.pem
 require_certificate false
 
-# WebSocket over SSL → external 9004
 listener 9001
 protocol websockets
 cafile /etc/letsencrypt/live/yourdomain.com/fullchain.pem
@@ -145,7 +231,7 @@ require_certificate false
 
 ---
 
-## 👥 4️⃣ users.txt
+## 👥 7️⃣ **users.txt**
 
 ```
 admin:Admin@123
@@ -155,7 +241,7 @@ webapp:Web@123
 
 ---
 
-## 🧩 5️⃣ add-users.sh
+## ⚡ 8️⃣ **add-users.sh**
 
 ```bash
 #!/bin/sh
@@ -175,7 +261,7 @@ done < "$USERS_FILE"
 echo "[INIT] Password file updated."
 ```
 
-Make executable:
+Make it executable:
 
 ```bash
 chmod +x scripts/add-users.sh
@@ -183,55 +269,37 @@ chmod +x scripts/add-users.sh
 
 ---
 
-## ⚡ 6️⃣ Launch Everything
+## 🧩 9️⃣ **Start Services**
 
 ```bash
 docker compose up -d
 docker compose logs -f certbot
 ```
 
-When the first run completes, check that certificates exist:
+Once certificates are issued:
 
 ```bash
 ls -l config/certs/
-# privkey.pem, fullchain.pem, chain.pem should be present
-```
-
-Then restart Mosquitto:
-
-```bash
 docker restart mqtt-broker
 ```
 
 ---
 
-## 🔁 7️⃣ Automatic Certificate Renewal
-
-Certbot stores certificates in the same volume, so renew with:
-
-```bash
-docker run --rm \
-  -v $(pwd)/config/certs:/etc/letsencrypt/live/yourdomain.com \
-  certbot/certbot renew
-```
-
-Automate via **cron** (host):
+## 🔁 🔄 **Auto Certificate Renewal (Cron Job)**
 
 ```bash
 sudo crontab -e
 ```
 
-Add:
+Add this line:
 
 ```
 0 3 * * * cd /root/projects/mqtt && docker run --rm -v $(pwd)/config/certs:/etc/letsencrypt/live/yourdomain.com certbot/certbot renew && docker restart mqtt-broker
 ```
 
-Runs daily at 3 AM and restarts Mosquitto if renewal occurs.
-
 ---
 
-## 🧠 8️⃣ Verify SSL and WSS Connections
+## 🧠 🔍 **Verification**
 
 ### MQTT (SSL)
 
@@ -254,48 +322,40 @@ client.connect({
 
 ---
 
-## 🧾 9️⃣ Log Inspection
+## 📜 Logs and Monitoring
 
-| Command                            | Description                       |
-| ---------------------------------- | --------------------------------- |
-| `docker compose logs -f mosquitto` | Live broker logs                  |
-| `tail -f log/mosquitto.log`        | Direct log file                   |
-| `docker compose logs -f certbot`   | Certificate issuance/renewal logs |
-| `docker exec -it mqtt-broker sh`   | Enter broker container            |
-
----
-
-## 🧩 🔧 Troubleshooting
-
-| Problem                  | Cause                       | Fix                                         |
-| ------------------------ | --------------------------- | ------------------------------------------- |
-| `SSL handshake error`    | Certbot not finished        | Wait until certs appear, restart Mosquitto  |
-| `Permission denied`      | Wrong volume perms          | `chmod -R 777 config`                       |
-| `Port 80 in use`         | Another web service running | Stop it temporarily during cert issuance    |
-| `WSS keeps reconnecting` | Browser caching non-SSL     | Clear cache, verify `wss://` + correct port |
-| `auth failed`            | Incorrect `users.txt`       | Run `add-users.sh` again and restart broker |
+| Command                            | Description         |
+| ---------------------------------- | ------------------- |
+| `docker compose logs -f mosquitto` | Broker live logs    |
+| `tail -f log/mosquitto.log`        | Raw file logs       |
+| `docker compose logs -f certbot`   | SSL events          |
+| `docker exec -it mqtt-broker sh`   | Access broker shell |
 
 ---
 
-## 🔒 10️⃣ User Permissions and Security
+## 🧩 Troubleshooting
 
-* `allow_anonymous false` forces authenticated logins.
-* `users.txt` contains credentials → hashed to `passwd`.
-* `acls` restricts topic namespaces.
-* SSL certificates encrypt all MQTT + WebSocket traffic.
-* Use firewall or Nginx proxy to hide raw ports if exposed publicly.
+| Issue               | Cause                     | Solution                      |
+| ------------------- | ------------------------- | ----------------------------- |
+| SSL handshake error | Certbot not finished      | Wait & restart broker         |
+| Permission denied   | Wrong volume permissions  | `chmod -R 777 config`         |
+| Port 80 in use      | Web server running        | Stop Nginx/Apache temporarily |
+| WSS reconnect loop  | Browser cache / wrong URL | Clear cache & verify `wss://` |
+| Auth failed         | Incorrect credentials     | Update `users.txt` + restart  |
 
 ---
 
-✅ **Summary**
+## ✅ Final Summary
 
-| Component                    | Status |
-| ---------------------------- | ------ |
-| Mosquitto (MQTT + WSS + SSL) | ✅      |
-| Certbot (auto certs + renew) | ✅      |
-| Redis cache                  | ✅      |
-| Dynamic user management      | ✅      |
-| Automatic renewal + restart  | ✅      |
+| Component                        | Description            | Status |
+| -------------------------------- | ---------------------- | ------ |
+| **Ubuntu 24.04.3 LTS**           | Base OS                | ✅      |
+| **Docker + Compose**             | Container runtime      | ✅      |
+| **Mosquitto (MQTT + WSS + SSL)** | Secure messaging       | ✅      |
+| **Certbot**                      | SSL issuance + renewal | ✅      |
+| **Redis**                        | Cache / message sync   | ✅      |
+| **Dynamic User Management**      | via `users.txt`        | ✅      |
+| **Auto Renewal + Restart**       | via cron job           | ✅      |
 
 ---
 
