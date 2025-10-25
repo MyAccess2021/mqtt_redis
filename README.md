@@ -271,8 +271,15 @@ PASSWD_FILE="/mosquitto/config/passwd"
 USERS_FILE="/mosquitto/config/users.txt"
 
 echo "[INIT] Regenerating Mosquitto password file from users.txt..."
-rm -f "$PASSWD_FILE"
 
+# Do not try to remove the passwd file — just update or create it
+if [ ! -f "$PASSWD_FILE" ]; then
+  touch "$PASSWD_FILE"
+  chown root:root "$PASSWD_FILE"
+  chmod 640 "$PASSWD_FILE"
+fi
+
+# Rebuild password entries
 while IFS=: read -r user pass; do
   [ -z "$user" ] && continue
   [ "${user#\#}" != "$user" ] && continue
@@ -281,6 +288,7 @@ while IFS=: read -r user pass; do
 done < "$USERS_FILE"
 
 echo "[INIT] Password file updated."
+exec mosquitto -v -c /mosquitto/config/mosquitto.conf
 ```
 
 Make it executable:
