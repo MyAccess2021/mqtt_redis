@@ -1,0 +1,7 @@
+# ACL rules
+
+user admin
+topic readwrite #
+
+# Each user can access their own namespace
+pattern readwrite %u/#

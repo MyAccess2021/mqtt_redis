@@ -1,0 +1,292 @@
+1761367001: mosquitto version 2.0.22 starting
+1761367001: Config loaded from /mosquitto/config/mosquitto.conf.
+1761367001: Opening ipv4 listen socket on port 1883.
+1761367001: Opening ipv6 listen socket on port 1883.
+1761367001: Opening ipv4 listen socket on port 8883.
+1761367001: Opening ipv6 listen socket on port 8883.
+1761367001: Opening websockets listen socket on port 9001.
+1761367001: mosquitto version 2.0.22 running
+1761367015: mosquitto version 2.0.22 terminating
+1761367015: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1761367042: mosquitto version 2.0.22 starting
+1761367042: Config loaded from /mosquitto/config/mosquitto.conf.
+1761367042: Opening ipv4 listen socket on port 1883.
+1761367042: Opening ipv6 listen socket on port 1883.
+1761367042: Opening ipv4 listen socket on port 8883.
+1761367042: Opening ipv6 listen socket on port 8883.
+1761367042: Opening websockets listen socket on port 9001.
+1761367042: mosquitto version 2.0.22 running
+1761367076: New connection from 122.175.53.180:60184 on port 1883.
+1761367076: New client connected from 122.175.53.180:60184 as mymqtt-9055524328154 (p2, c0, k60, u'user1').
+1761367076: No will message specified.
+1761367076: Sending CONNACK to mymqtt-9055524328154 (0, 0)
+1761367076: Received SUBSCRIBE from mymqtt-9055524328154
+1761367076: 	sagroup (QoS 2)
+1761367076: mymqtt-9055524328154 2 sagroup
+1761367076: 	sagroup (QoS 2)
+1761367076: mymqtt-9055524328154 2 sagroup
+1761367076: 	sagroup (QoS 2)
+1761367076: mymqtt-9055524328154 2 sagroup
+1761367076: 	sagroup (QoS 2)
+1761367076: mymqtt-9055524328154 2 sagroup
+1761367076: 	sagroup (QoS 2)
+1761367076: mymqtt-9055524328154 2 sagroup
+1761367076: 	sagroup (QoS 2)
+1761367076: mymqtt-9055524328154 2 sagroup
+1761367076: Sending SUBACK to mymqtt-9055524328154
+1761367078: Received DISCONNECT from mymqtt-9055524328154
+1761367078: Client mymqtt-9055524328154 disconnected.
+1761367095: New connection from 122.175.53.180:60190 on port 1883.
+1761367095: New client connected from 122.175.53.180:60190 as mymqtt-9074695496155 (p2, c0, k60, u'admin').
+1761367095: No will message specified.
+1761367095: Sending CONNACK to mymqtt-9074695496155 (0, 0)
+1761367095: Received SUBSCRIBE from mymqtt-9074695496155
+1761367095: 	sagroup (QoS 2)
+1761367095: mymqtt-9074695496155 2 sagroup
+1761367095: 	sagroup (QoS 2)
+1761367095: mymqtt-9074695496155 2 sagroup
+1761367095: 	sagroup (QoS 2)
+1761367095: mymqtt-9074695496155 2 sagroup
+1761367095: 	sagroup (QoS 2)
+1761367095: mymqtt-9074695496155 2 sagroup
+1761367095: 	sagroup (QoS 2)
+1761367095: mymqtt-9074695496155 2 sagroup
+1761367095: 	sagroup (QoS 2)
+1761367095: mymqtt-9074695496155 2 sagroup
+1761367095: Sending SUBACK to mymqtt-9074695496155
+1761367104: Received SUBSCRIBE from mymqtt-9074695496155
+1761367104: 	go (QoS 2)
+1761367104: mymqtt-9074695496155 2 go
+1761367104: Sending SUBACK to mymqtt-9074695496155
+1761367109: Received PUBLISH from mymqtt-9074695496155 (d0, q0, r0, m0, 'go', ... (5 bytes))
+1761367109: Sending PUBLISH to mymqtt-9074695496155 (d0, q0, r0, m0, 'go', ... (5 bytes))
+1761367169: Received PINGREQ from mymqtt-9074695496155
+1761367169: Sending PINGRESP to mymqtt-9074695496155
+1761367229: Received PINGREQ from mymqtt-9074695496155
+1761367229: Sending PINGRESP to mymqtt-9074695496155
+1761367289: Received PINGREQ from mymqtt-9074695496155
+1761367289: Sending PINGRESP to mymqtt-9074695496155
+1761367349: Received PINGREQ from mymqtt-9074695496155
+1761367349: Sending PINGRESP to mymqtt-9074695496155
+1761367409: Received PINGREQ from mymqtt-9074695496155
+1761367409: Sending PINGRESP to mymqtt-9074695496155
+1761367469: Received PINGREQ from mymqtt-9074695496155
+1761367469: Sending PINGRESP to mymqtt-9074695496155
+1761367529: Received PINGREQ from mymqtt-9074695496155
+1761367529: Sending PINGRESP to mymqtt-9074695496155
+1761367561: New connection from 122.175.53.180:42088 on port 8883.
+1761367561: New client connected from 122.175.53.180:42088 as mymqtt-77299455534134 (p5, c0, k60, u'admin').
+1761367561: No will message specified.
+1761367561: Sending CONNACK to mymqtt-77299455534134 (0, 0)
+1761367565: Received SUBSCRIBE from mymqtt-77299455534134
+1761367565: 	go (QoS 2)
+1761367565: mymqtt-77299455534134 2 go
+1761367565: Sending SUBACK to mymqtt-77299455534134
+1761367572: Received PUBLISH from mymqtt-77299455534134 (d0, q0, r0, m0, 'go', ... (5 bytes))
+1761367572: Sending PUBLISH to mymqtt-9074695496155 (d0, q0, r0, m0, 'go', ... (5 bytes))
+1761367572: Sending PUBLISH to mymqtt-77299455534134 (d0, q0, r0, m0, 'go', ... (5 bytes))
+1761367589: Received PINGREQ from mymqtt-9074695496155
+1761367589: Sending PINGRESP to mymqtt-9074695496155
+1761367632: Received PINGREQ from mymqtt-77299455534134
+1761367632: Sending PINGRESP to mymqtt-77299455534134
+1761367649: Received PINGREQ from mymqtt-9074695496155
+1761367649: Sending PINGRESP to mymqtt-9074695496155
+1761367692: Received PINGREQ from mymqtt-77299455534134
+1761367692: Sending PINGRESP to mymqtt-77299455534134
+1761367709: Received PINGREQ from mymqtt-9074695496155
+1761367709: Sending PINGRESP to mymqtt-9074695496155
+1761367718: Client mymqtt-9074695496155 closed its connection.
+1761367752: Received PINGREQ from mymqtt-77299455534134
+1761367752: Sending PINGRESP to mymqtt-77299455534134
+1761367812: Received PINGREQ from mymqtt-77299455534134
+1761367812: Sending PINGRESP to mymqtt-77299455534134
+1761367872: Received PINGREQ from mymqtt-77299455534134
+1761367872: Sending PINGRESP to mymqtt-77299455534134
+1761367932: Received PINGREQ from mymqtt-77299455534134
+1761367932: Sending PINGRESP to mymqtt-77299455534134
+1761367992: Received PINGREQ from mymqtt-77299455534134
+1761367992: Sending PINGRESP to mymqtt-77299455534134
+1761368032: New client connected from ::ffff:122.175.53.180:58250 as mqttx_22f18f66 (p5, c1, k60, u'admin').
+1761368032: No will message specified.
+1761368032: Sending CONNACK to mqttx_22f18f66 (0, 0)
+1761368052: Received PINGREQ from mymqtt-77299455534134
+1761368052: Sending PINGRESP to mymqtt-77299455534134
+1761368092: Received PINGREQ from mqttx_22f18f66
+1761368092: Sending PINGRESP to mqttx_22f18f66
+1761368112: Received PINGREQ from mymqtt-77299455534134
+1761368112: Sending PINGRESP to mymqtt-77299455534134
+1761368152: Received PINGREQ from mqttx_22f18f66
+1761368152: Sending PINGRESP to mqttx_22f18f66
+1761368172: Received PINGREQ from mymqtt-77299455534134
+1761368172: Sending PINGRESP to mymqtt-77299455534134
+1761368183: mosquitto version 2.0.22 terminating
+1761368183: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1761368183: Client mqttx_22f18f66 closed its connection.
+1761368195: mosquitto version 2.0.22 starting
+1761368195: Config loaded from /mosquitto/config/mosquitto.conf.
+1761368195: Opening ipv4 listen socket on port 1883.
+1761368195: Opening ipv6 listen socket on port 1883.
+1761368195: Opening ipv4 listen socket on port 8883.
+1761368195: Opening ipv6 listen socket on port 8883.
+1761368195: Opening websockets listen socket on port 9001.
+1761368195: mosquitto version 2.0.22 running
+1761368196: Expiring client mymqtt-77299455534134 due to timeout.
+1761368196: New connection from 122.175.53.180:42206 on port 8883.
+1761368196: New client connected from 122.175.53.180:42206 as mymqtt-77299455534134 (p5, c1, k60, u'admin').
+1761368196: No will message specified.
+1761368196: Sending CONNACK to mymqtt-77299455534134 (0, 0)
+1761368196: Received SUBSCRIBE from mymqtt-77299455534134
+1761368196: 	go (QoS 2)
+1761368196: mymqtt-77299455534134 2 go
+1761368196: Sending SUBACK to mymqtt-77299455534134
+1761368201: New client connected from ::ffff:122.175.53.180:58265 as mqttx_22f18f66 (p5, c1, k60, u'admin').
+1761368201: No will message specified.
+1761368201: Sending CONNACK to mqttx_22f18f66 (0, 0)
+1761368248: New client connected from ::ffff:122.175.53.180:58267 as mqttx_3f15cd1b (p5, c1, k60, u'admin').
+1761368248: No will message specified.
+1761368248: Sending CONNACK to mqttx_3f15cd1b (0, 0)
+1761368256: Received PINGREQ from mymqtt-77299455534134
+1761368256: Sending PINGRESP to mymqtt-77299455534134
+1761368258: Received SUBSCRIBE from mqttx_3f15cd1b
+1761368258: 	game (QoS 0)
+1761368258: mqttx_3f15cd1b 0 game
+1761368258: Sending SUBACK to mqttx_3f15cd1b
+1761368261: Received PINGREQ from mqttx_22f18f66
+1761368261: Sending PINGRESP to mqttx_22f18f66
+1761368266: Received SUBSCRIBE from mqttx_22f18f66
+1761368266: 	game (QoS 0)
+1761368266: mqttx_22f18f66 0 game
+1761368266: Sending SUBACK to mqttx_22f18f66
+1761368291: Received PUBLISH from mqttx_3f15cd1b (d0, q0, r0, m0, 'game', ... (20 bytes))
+1761368291: Sending PUBLISH to mqttx_3f15cd1b (d0, q0, r0, m0, 'game', ... (20 bytes))
+1761368291: Sending PUBLISH to mqttx_22f18f66 (d0, q0, r0, m0, 'game', ... (20 bytes))
+1761368316: Received PINGREQ from mymqtt-77299455534134
+1761368316: Sending PINGRESP to mymqtt-77299455534134
+1761368322: Received PUBLISH from mqttx_3f15cd1b (d0, q0, r0, m0, 'game', ... (19 bytes))
+1761368322: Sending PUBLISH to mqttx_3f15cd1b (d0, q0, r0, m0, 'game', ... (19 bytes))
+1761368322: Sending PUBLISH to mqttx_22f18f66 (d0, q0, r0, m0, 'game', ... (19 bytes))
+1761368326: Received PINGREQ from mqttx_22f18f66
+1761368326: Sending PINGRESP to mqttx_22f18f66
+1761368338: Received PUBLISH from mqttx_22f18f66 (d0, q0, r0, m0, 'game', ... (19 bytes))
+1761368338: Sending PUBLISH to mqttx_3f15cd1b (d0, q0, r0, m0, 'game', ... (19 bytes))
+1761368338: Sending PUBLISH to mqttx_22f18f66 (d0, q0, r0, m0, 'game', ... (19 bytes))
+1761368376: Received PINGREQ from mymqtt-77299455534134
+1761368376: Sending PINGRESP to mymqtt-77299455534134
+1761368382: Received PINGREQ from mqttx_3f15cd1b
+1761368382: Sending PINGRESP to mqttx_3f15cd1b
+1761368398: Received PINGREQ from mqttx_22f18f66
+1761368398: Sending PINGRESP to mqttx_22f18f66
+1761368436: Received PINGREQ from mymqtt-77299455534134
+1761368436: Sending PINGRESP to mymqtt-77299455534134
+1761368442: Received PINGREQ from mqttx_3f15cd1b
+1761368442: Sending PINGRESP to mqttx_3f15cd1b
+1761368458: Received PINGREQ from mqttx_22f18f66
+1761368458: Sending PINGRESP to mqttx_22f18f66
+1761368496: Received PINGREQ from mymqtt-77299455534134
+1761368496: Sending PINGRESP to mymqtt-77299455534134
+1761368502: Received PINGREQ from mqttx_3f15cd1b
+1761368502: Sending PINGRESP to mqttx_3f15cd1b
+1761368518: Received PINGREQ from mqttx_22f18f66
+1761368518: Sending PINGRESP to mqttx_22f18f66
+1761368521: mosquitto version 2.0.22 terminating
+1761368521: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1761368521: Client mqttx_3f15cd1b closed its connection.
+1761368521: Client mqttx_22f18f66 closed its connection.
+1761368526: mosquitto version 2.0.22 starting
+1761368526: Config loaded from /mosquitto/config/mosquitto.conf.
+1761368526: Opening ipv4 listen socket on port 1883.
+1761368526: Opening ipv6 listen socket on port 1883.
+1761368526: Opening ipv4 listen socket on port 8883.
+1761368526: Opening ipv6 listen socket on port 8883.
+1761368526: Opening websockets listen socket on port 9001.
+1761368526: mosquitto version 2.0.22 running
+1761368530: New connection from 122.175.53.180:42230 on port 8883.
+1761368530: New client connected from 122.175.53.180:42230 as mymqtt-77299455534134 (p5, c1, k60, u'admin').
+1761368530: No will message specified.
+1761368530: Sending CONNACK to mymqtt-77299455534134 (0, 0)
+1761368530: Received SUBSCRIBE from mymqtt-77299455534134
+1761368530: 	go (QoS 2)
+1761368530: mymqtt-77299455534134 2 go
+1761368530: Sending SUBACK to mymqtt-77299455534134
+1761368534: New client connected from ::ffff:122.175.53.180:58294 as mqttx_d9050720 (p5, c1, k60, u'admin').
+1761368534: No will message specified.
+1761368534: Sending CONNACK to mqttx_d9050720 (0, 0)
+1761368550: Received SUBSCRIBE from mqttx_d9050720
+1761368550: 	uchiha (QoS 0)
+1761368550: mqttx_d9050720 0 uchiha
+1761368550: Sending SUBACK to mqttx_d9050720
+1761368572: Client mqttx_d9050720 closed its connection.
+1761368590: Received PINGREQ from mymqtt-77299455534134
+1761368590: Sending PINGRESP to mymqtt-77299455534134
+1761368650: Received PINGREQ from mymqtt-77299455534134
+1761368650: Sending PINGRESP to mymqtt-77299455534134
+1761368710: Received PINGREQ from mymqtt-77299455534134
+1761368710: Sending PINGRESP to mymqtt-77299455534134
+1761368770: Received PINGREQ from mymqtt-77299455534134
+1761368770: Sending PINGRESP to mymqtt-77299455534134
+1761368830: Received PINGREQ from mymqtt-77299455534134
+1761368830: Sending PINGRESP to mymqtt-77299455534134
+1761368867: New connection from 122.175.53.180:60428 on port 1883.
+1761368867: New client connected from 122.175.53.180:60428 as mymqtt-9074695496155 (p2, c0, k60, u'admin').
+1761368867: No will message specified.
+1761368867: Sending CONNACK to mymqtt-9074695496155 (1, 0)
+1761368878: Client mymqtt-9074695496155 closed its connection.
+1761368890: Received PINGREQ from mymqtt-77299455534134
+1761368890: Sending PINGRESP to mymqtt-77299455534134
+1761368950: Received PINGREQ from mymqtt-77299455534134
+1761368950: Sending PINGRESP to mymqtt-77299455534134
+1761369009: New client connected from ::ffff:122.175.53.180:58418 as mqttx_fa5d1084 (p5, c1, k60, u'admin').
+1761369009: No will message specified.
+1761369009: Sending CONNACK to mqttx_fa5d1084 (0, 0)
+1761369010: Received PINGREQ from mymqtt-77299455534134
+1761369010: Sending PINGRESP to mymqtt-77299455534134
+1761369050: New client connected from ::ffff:122.175.53.180:58422 as mqttx_add9d257 (p5, c1, k60, u'admin').
+1761369050: No will message specified.
+1761369050: Sending CONNACK to mqttx_add9d257 (0, 0)
+1761369060: Received SUBSCRIBE from mqttx_add9d257
+1761369060: 	god (QoS 0)
+1761369060: mqttx_add9d257 0 god
+1761369060: Sending SUBACK to mqttx_add9d257
+1761369069: Received PINGREQ from mqttx_fa5d1084
+1761369069: Sending PINGRESP to mqttx_fa5d1084
+1761369070: Received PINGREQ from mymqtt-77299455534134
+1761369070: Sending PINGRESP to mymqtt-77299455534134
+1761369078: Received SUBSCRIBE from mqttx_fa5d1084
+1761369078: 	god (QoS 0)
+1761369078: mqttx_fa5d1084 0 god
+1761369078: Sending SUBACK to mqttx_fa5d1084
+1761369084: Received PUBLISH from mqttx_add9d257 (d0, q0, r0, m0, 'god', ... (20 bytes))
+1761369084: Sending PUBLISH to mqttx_add9d257 (d0, q0, r0, m0, 'god', ... (20 bytes))
+1761369084: Sending PUBLISH to mqttx_fa5d1084 (d0, q0, r0, m0, 'god', ... (20 bytes))
+1761369130: Received PINGREQ from mymqtt-77299455534134
+1761369130: Sending PINGRESP to mymqtt-77299455534134
+1761369138: Received PINGREQ from mqttx_fa5d1084
+1761369138: Sending PINGRESP to mqttx_fa5d1084
+1761369144: Received PINGREQ from mqttx_add9d257
+1761369144: Sending PINGRESP to mqttx_add9d257
+1761369189: Received PINGREQ from mymqtt-77299455534134
+1761369189: Sending PINGRESP to mymqtt-77299455534134
+1761369198: Received PINGREQ from mqttx_fa5d1084
+1761369198: Sending PINGRESP to mqttx_fa5d1084
+1761369204: Received PINGREQ from mqttx_add9d257
+1761369204: Sending PINGRESP to mqttx_add9d257
+1761369249: Received PINGREQ from mymqtt-77299455534134
+1761369249: Sending PINGRESP to mymqtt-77299455534134
+1761369258: Received PINGREQ from mqttx_fa5d1084
+1761369258: Sending PINGRESP to mqttx_fa5d1084
+1761369264: Received PINGREQ from mqttx_add9d257
+1761369264: Sending PINGRESP to mqttx_add9d257
+1761369309: Received PINGREQ from mymqtt-77299455534134
+1761369309: Sending PINGRESP to mymqtt-77299455534134
+1761369318: Received PINGREQ from mqttx_fa5d1084
+1761369318: Sending PINGRESP to mqttx_fa5d1084
+1761369324: Received PINGREQ from mqttx_add9d257
+1761369324: Sending PINGRESP to mqttx_add9d257
+1761369369: Received PINGREQ from mymqtt-77299455534134
+1761369369: Sending PINGRESP to mymqtt-77299455534134
+1761369378: Received PINGREQ from mqttx_fa5d1084
+1761369378: Sending PINGRESP to mqttx_fa5d1084
+1761369384: Received PINGREQ from mqttx_add9d257
+1761369384: Sending PINGRESP to mqttx_add9d257
+1761369429: Received PINGREQ from mymqtt-77299455534134
+1761369429: Sending PINGRESP to mymqtt-77299455534134
