@@ -202,6 +202,10 @@ volumes:
 ## 🔐 6️⃣ **mosquitto.conf (SSL + WSS)**
 
 ```conf
+# ==================================
+# Mosquitto Configuration (Docker)
+# ==================================
+
 persistence true
 persistence_location /mosquitto/data/
 persistence_file mosquitto.db
@@ -213,20 +217,38 @@ allow_anonymous false
 password_file /mosquitto/config/passwd
 acl_file /mosquitto/config/acls
 
+# -----------------------------
+# MQTT (TCP) → external 1884
+# -----------------------------
 listener 1883
+protocol mqtt
 
+# -----------------------------
+# MQTT over SSL → external 8884
+# -----------------------------
 listener 8883
-cafile /etc/letsencrypt/live/yourdomain.com/fullchain.pem
-certfile /etc/letsencrypt/live/yourdomain.com/fullchain.pem
-keyfile /etc/letsencrypt/live/yourdomain.com/privkey.pem
+protocol mqtt
+cafile /mosquitto/certs/chain.pem
+certfile /mosquitto/certs/fullchain.pem
+keyfile /mosquitto/certs/privkey.pem
 require_certificate false
+use_identity_as_username false
 
+# -----------------------------
+# WebSocket over SSL → external 9004
+# -----------------------------
 listener 9001
 protocol websockets
-cafile /etc/letsencrypt/live/yourdomain.com/fullchain.pem
-certfile /etc/letsencrypt/live/yourdomain.com/fullchain.pem
-keyfile /etc/letsencrypt/live/yourdomain.com/privkey.pem
+cafile /mosquitto/certs/chain.pem
+certfile /mosquitto/certs/fullchain.pem
+keyfile /mosquitto/certs/privkey.pem
 require_certificate false
+
+# -----------------------------
+# Miscellaneous
+# -----------------------------
+connection_messages true
+autosave_interval 1800
 ```
 
 ---
