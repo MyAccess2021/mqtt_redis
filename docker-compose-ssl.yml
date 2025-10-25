@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: mqtt-broker
+    restart: always
+    depends_on:
+      - certbot
+    ports:
+      - "1884:1883"   # MQTT
+      - "8884:8883"   # MQTT over SSL
+      - "9004:9001"   # WebSocket over SSL
+    volumes:
+      - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./config/passwd:/mosquitto/config/passwd
+      - ./config/acls:/mosquitto/config/acls
+      - ./config/certs:/etc/letsencrypt/live/yourdomain.com
+      - ./data:/mosquitto/data
+      - ./log:/mosquitto/log
+      - ./scripts/add-users.sh:/usr/local/bin/add-users.sh
+      - ./config/users.txt:/mosquitto/config/users.txt
+    entrypoint: ["/bin/sh", "-c", "/usr/local/bin/add-users.sh && mosquitto -c /mosquitto/config/mosquitto.conf"]
+    environment:
+      - TZ=Asia/Kolkata
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: certbot
+    restart: unless-stopped
+    command: certonly --standalone -d yourdomain.com --agree-tos --email admin@yourdomain.com --non-interactive --keep-until-expiring
+    ports:
+      - "80:80"       # temporary during first run (HTTP-01 challenge)
+    volumes:
+      - ./config/certs:/etc/letsencrypt/live/yourdomain.com
+
+  redis:
+    image: redis:7
+    container_name: redis-cache
+    restart: always
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+
+volumes:
+  redis-data:

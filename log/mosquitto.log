@@ -336,3 +336,52 @@
 1761369859: Sending PINGRESP to mqttx_fa5d1084
 1761369864: Received PINGREQ from mqttx_add9d257
 1761369864: Sending PINGRESP to mqttx_add9d257
+1761369909: Received PINGREQ from mymqtt-77299455534134
+1761369909: Sending PINGRESP to mymqtt-77299455534134
+1761369919: Received PINGREQ from mqttx_fa5d1084
+1761369919: Sending PINGRESP to mqttx_fa5d1084
+1761369924: Received PINGREQ from mqttx_add9d257
+1761369924: Sending PINGRESP to mqttx_add9d257
+1761369969: Received PINGREQ from mymqtt-77299455534134
+1761369969: Sending PINGRESP to mymqtt-77299455534134
+1761369984: Received PINGREQ from mqttx_add9d257
+1761369984: Sending PINGRESP to mqttx_add9d257
+1761369991: Received PINGREQ from mqttx_fa5d1084
+1761369991: Sending PINGRESP to mqttx_fa5d1084
+1761370029: Received PINGREQ from mymqtt-77299455534134
+1761370029: Sending PINGRESP to mymqtt-77299455534134
+1761370044: Received PINGREQ from mqttx_add9d257
+1761370044: Sending PINGRESP to mqttx_add9d257
+1761370055: Received PINGREQ from mqttx_fa5d1084
+1761370055: Sending PINGRESP to mqttx_fa5d1084
+1761370089: Received PINGREQ from mymqtt-77299455534134
+1761370089: Sending PINGRESP to mymqtt-77299455534134
+1761370104: Received PINGREQ from mqttx_add9d257
+1761370104: Sending PINGRESP to mqttx_add9d257
+1761370145: Client mqttx_fa5d1084 closed its connection.
+1761370149: Received PINGREQ from mymqtt-77299455534134
+1761370149: Sending PINGRESP to mymqtt-77299455534134
+1761370164: Received PINGREQ from mqttx_add9d257
+1761370164: Sending PINGRESP to mqttx_add9d257
+1761370209: Received PINGREQ from mymqtt-77299455534134
+1761370209: Sending PINGRESP to mymqtt-77299455534134
+1761370224: Received PINGREQ from mqttx_add9d257
+1761370224: Sending PINGRESP to mqttx_add9d257
+1761370269: Received PINGREQ from mymqtt-77299455534134
+1761370269: Sending PINGRESP to mymqtt-77299455534134
+1761370284: Received PINGREQ from mqttx_add9d257
+1761370284: Sending PINGRESP to mqttx_add9d257
+1761370322: New client connected from ::ffff:122.175.53.180:58571 as mqttx_fa5d1084 (p5, c1, k60, u'admin').
+1761370322: No will message specified.
+1761370322: Sending CONNACK to mqttx_fa5d1084 (0, 0)
+1761370327: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1761370329: Received PINGREQ from mymqtt-77299455534134
+1761370329: Sending PINGRESP to mymqtt-77299455534134
+1761370344: Received PINGREQ from mqttx_add9d257
+1761370344: Sending PINGRESP to mqttx_add9d257
+1761370389: Received PINGREQ from mymqtt-77299455534134
+1761370389: Sending PINGRESP to mymqtt-77299455534134
+1761370402: Client mqttx_fa5d1084 closed its connection.
+1761370406: Received PINGREQ from mqttx_add9d257
+1761370406: Sending PINGRESP to mqttx_add9d257
+1761370412: Client mqttx_add9d257 closed its connection.
